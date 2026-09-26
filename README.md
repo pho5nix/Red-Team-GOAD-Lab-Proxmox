@@ -62,7 +62,7 @@ GOAD hosts use the domain controllers as their DNS (kingslanding, .10), required
 | GOAD-ELK SIEM      | 56   | 4    | 8 GB | 80 GB |
 
 Total is roughly 28 vCPU, 48 GB RAM, 620 GB thin provisioned disk for the full GOAD lab.  
-Against 80 GB RAM that leaves about 30 GB headroom for Proxmox itself and snapshots. The full lab plus ELK fits comfortably.  
+Against 80 GB RAM that leaves about 30 GB headroom for Proxmox itself and snapshots.    
 You can setup the GOAD-Light or the MINILAB instead, if limited resources.
 
 ---
