@@ -49,7 +49,7 @@ Services -> DHCP Server:
 
 - OPS_C2: Check Enable DHCP, Address Pool range: 172.23.150.100 to 172.23.150.120.  Leave .10 to .99 free for the reservations.
 - REDIRECTORS: Check Enable DHCP, Address Pool range: 10.60.160.100 to 10.60.160.120. Leave .10 to .99 free for the reservations.
-- AD_LAB: Check Enable DHCP (we will disable for the finished lab. GOAD assigns static IPs itself. A temporary exception applies only during Packer template builds, covered when that Part comes up), Address Pool range: 192.168.56.100 to 192.168.56.120. This is needed for the Ubuntu provisioning VM to get an IP when is created.
+- AD_LAB: Keep disabled, no changes.
 - HOME: Check Enable DHCP, Address Pool range: 10.10.100.100 to 10.10.100.120.  Optional: Create a reservation for you Desktop/Laptop.
 
 After the C2 and redirector VMs exist (Part 3), add DHCP static mappings by MAC so Kali, Sliver and both redirectors keep fixed addresses:
