@@ -2,12 +2,12 @@
 
 The build guide created for the fact that a pfSense firewall manages the network traffic between Operator, Redirectors and GOAD VMs instead of using Ludus and Wireguard.  
 Proxmox host NIC should be in a trunk port in order the lab VMs have their each VLAN tags assigned in proxmox network bridge when we create them.  
-Current setup have the Proxmox host NIC in a Management-LAN trunk port connected via the Layer 2 VLAN capable switch (as shown in the diagram) and is at the same subnet with pfSense firewall and the switch.  
+Current setup have the Proxmox host NIC in a Management-LAN trunk port connected via the Layer 2 VLAN capable switch (as shown in the diagram) and is at the same subnet with pfSense firewall and the switch.   
 This way you can reach the management UI of all network appliances and proxmox host from your Desktop/Laptop with a rule allowing the traffic to LAN subnet from your Desktop/Laptop VLAN, which is convenient for troubleshooting and setup.
 
 ---
 
-## 1.1 Create the VLAN interfaces
+# Create the VLAN interfaces
 
 Interfaces -> Assignments -> VLANs -> Add
 Do this four times, creating the below
@@ -23,7 +23,7 @@ The parent interface is the physical pfSense NIC carrying the tagged trunk to yo
 
 ---
 
-## 1.2 Assign and configure the interfaces
+# Assign and configure the interfaces
 
 Interfaces -> Assignments -> Interface Assignments
 Add each VLAN as a new interface and Save.  
@@ -43,7 +43,7 @@ All other subnets can be changed by your choice.
 
 ---
 
-## 1.3 DHCP
+# DHCP
 
 Services -> DHCP Server:
 
@@ -60,7 +60,7 @@ After the C2 and redirector VMs exist (Part 3), add DHCP static mappings by MAC 
 
 ---
 
-## 1.4 Firewall aliases
+# Firewall aliases
 
 Optional, but useful for the rules we will create.
 Firewall -> Aliases -> IP ->  Add:
@@ -70,7 +70,7 @@ Firewall -> Aliases -> IP ->  Add:
 
 ---
 
-## 1.5 Firewall rules
+# Firewall rules
 
 Rules are evaluated top down, first match wins, applied on the interface where traffic enters.  
 "Real LAN" is covered by the RFC1918 alias minus the specific allows above each block.
