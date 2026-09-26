@@ -101,13 +101,13 @@ This server stays on VLAN 150, behind the redirectors and is the real team serve
 - Role: nginx reverse proxy forwarding inbound HTTP/S from the GOAD lab to the Sliver HTTPS listener on VLAN 150, with a filtering and decoy layer.
 - Reservation at 10.60.160.10.
 
-## 3.4 Ubuntu DNS/SSH redirector, VLAN 160
+## Ubuntu DNS/SSH redirector, VLAN 160
 
 - Create VM, attach Ubuntu Server ISO, NIC tag:160, vCPU:1 socket-2 cores, RAM:2 GB, Storage:20 GB.
 - Role: DNS redirection (nginx stream or socat) and SSH pivot toward VLAN 150. 
 - Reservation at 10.60.160.20.
 
-## 3.5 Validate the network before GOAD setup
+## Validate the network before GOAD setup
 
 From Kali (VLAN 150): Confirm you can reach the redirectors (VLAN 160) and vice versa per policy. Also check that Kali cannot reach your "Real LAN".  
 From your desktop (VLAN 100): Confirm RDP/SSH to Kali works. Fix any pfSense rule issues now while the topology is simple.
@@ -270,7 +270,7 @@ The source IP shown is Kali's, on the operator VLAN, confirming both requests ac
 
 There are two options for this as nginx is an HTTP/S proxy by default. It does not redirect DNS or raw SSH out of the box. That needs either nginx separate stream module or a dedicated tool such as socat. This second box handles both fallback channels and we have a choice for the DNS part, covered below.
 
-### Option A, DNS redirection with nginx's stream module
+### Option A: DNS redirection with nginx's stream module
 
 nginx's stream module proxies raw TCP and UDP, separate from the http module we already used for the HTTP/S redirector. On Ubuntu it ships inside the standard nginx package as a module. Check if exists first since some minimal installs may not include it:
 
@@ -315,7 +315,7 @@ Verify it is actually listening:
 sudo ss -ulnp | grep :53
 ```
 
-### Option B, DNS redirection with socat instead
+### Option B: DNS redirection with socat instead
 
 socat is a general purpose relay tool, simpler for a single fixed forward than nginx's stream module and worth knowing independently of nginx, since you will likely reach for it again for other pivoting tasks.
 
