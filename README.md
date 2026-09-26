@@ -66,3 +66,7 @@ Against 80 GB RAM that leaves about 30 GB headroom for Proxmox itself and snapsh
 You can setup the GOAD-Light or the MINILAB instead, if limited resources.
 
 ---
+
+## Disclaimer
+
+This lab is built strictly for education and authorized security training in an isolated, self contained environment. The techniques it teaches are the same ones defenders need to understand to protect real systems. Keep it isolated, keep it local and use what you learn to make things more secure.
